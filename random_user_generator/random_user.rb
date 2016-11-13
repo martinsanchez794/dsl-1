@@ -1,18 +1,23 @@
 require 'rest-client'
 require 'json'
+require 'logger'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::INFO
 
 if (ARGV.size != 1)
-  puts 'Usage: random_user [number of users to generate]'
+  logger.error('Invalid parameters')
+  logger.error ('Usage: random_user [number of users to generate]')
   exit(1)
 end
 
-
 users = ARGV[0].to_i
+logger.info('Calling randomuser api.')
 safeurl = URI.encode(('https://randomuser.me/api/?results=' + users.to_s).strip)
 
-puts 'Getting random user data...'
+logger.info ('Getting random user data...')
 response = RestClient.get(safeurl)
-puts 'Random users generated successfully'
+logger.info ('Random users generated successfully')
 json = JSON.parse(response)
 
 json['results'].each do |user|
