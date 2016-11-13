@@ -9,6 +9,7 @@ logger.level = Logger::WARN
 inputFile = ARGV[0]
 if ( inputFile.nil? || !File.file?(inputFile) )
   logger.error ('A valid input file with a list of IP adresses must be specified.')
+  logger.error ('Usage: bulkipinfo [csv file]')
   exit(1)
 end
 
