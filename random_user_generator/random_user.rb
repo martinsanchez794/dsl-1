@@ -1,6 +1,12 @@
 require 'rest-client'
 require 'json'
 
+if (ARGV.size != 1)
+  puts 'Usage: random_user [number of users to generate]'
+  exit(1)
+end
+
+
 users = ARGV[0].to_i
 safeurl = URI.encode(('https://randomuser.me/api/?results=' + users.to_s).strip)
 
