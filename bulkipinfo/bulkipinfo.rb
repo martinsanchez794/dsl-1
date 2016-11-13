@@ -28,7 +28,7 @@ File.open(inputFile, "r") do |f|
           rows << json
         end
       end
-      sleep(1.0)
+      sleep(1.0) #This is to avoid the limit in the ip-api service
     end
   end
 end
